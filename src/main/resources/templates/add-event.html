@@ -1,0 +1,73 @@
+<header class="py-5">
+  <div class="container px-lg-5">
+    <div class="p-4 p-lg-5 bg-light rounded-3">
+      <div class="m-4 m-lg-5">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <form action="/events/add"
+                    method="post"
+                    enctype="multipart/form-data"
+                    th:object="${event}">
+                <input type="text" hidden="hidden" name="id" th:value="${event.getId()}">
+                <div class="form-group my-3">
+                  <label for="name">Event name</label>
+                  <input type="text"
+                         class="form-control"
+                         th:value="${event.getName()}"
+                         id="name"
+                         name="name"
+                         th:field="*{name}"
+                         required
+                         placeholder="Enter event name">
+                </div>
+                <div class="form-group my-3">
+                  <label for="location">Location</label>
+                  <input type="text"
+                         class="form-control"
+                         th:value="${event.getLocation()}"
+                         id="location"
+                         th:field="*{location}"
+                         name="location"
+                         placeholder="Location">
+                </div>
+                <div class="form-group my-3">
+                  <label for="participants">Number of participants</label>
+                  <input type="text"
+                         class="form-control"
+                         th:value="${event.getNrParticipants()}"
+                         id="participants"
+                         th:field="*{nrParticipants}"
+                         name="participants"
+                         placeholder="Nr. of participants">
+                </div>
+
+                <div class="form-group">
+                  <label>Manufacturer</label>
+                  <select th:field="*{category.id}" class="form-control">
+                    <option
+                            th:selected="${event.getCategory() != null && event.getCategory().getId() == category.getId()}"
+                            th:each="category : ${categories}"
+                            th:value="${category.getId()}"
+                            th:text="${category.getName()}">
+                    </option>
+                  </select>
+                </div>
+
+                <div class="form-group my-3">
+                  <label for="image">Image</label>
+                  <input name="image" id="image" class="form-control" type="file"/>
+                </div>
+
+                <button type="submit" class="btn btn-primary my-3">Submit</button>
+                <a type="button" class="btn btn-primary" href="/events">Back</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+

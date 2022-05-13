@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <section class="wrapper" xmlns:th="http://www.thymeleaf.org">
+        <div class="container-fostrap">
+            <div>
+<!--                <img src="https://4.bp.blogspot.com/-7OHSFmygfYQ/VtLSb1xe8kI/AAAAAAAABjI/FxaRp5xW2JQ/s320/logo.png" class="fostrap-logo"/>-->
+                <h1 class="heading">
+                    Events
+                </h1>
+            </div>
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4" th:each="event : ${events}">
+                            <div class="card">
+                                <a class="img-card" href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html">
+                                    <img th:src="${event.getImageBase64()}"/>
+                                </a>
+                                <div class="card-content">
+                                    <h4 class="card-title">
+                                        <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html" th:text="${event.getName()}"></a>
+                                    </h4>
+                                    <p class="">
+                                        Tutorial to make a carousel bootstrap by adding more wonderful effect fadein ...
+                                    </p>
+                                </div>
+                                <div class="card-read-more">
+                                    <a href="http://www.fostrap.com/2016/03/bootstrap-3-carousel-fade-effect.html" class="btn btn-link btn-block">
+                                        Read More
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col mb-3">
+                        <div class="row">
+                                <a href="/events/add-form" class="btn btn-block btn-dark add-product-btn">
+                                    Create new event
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
